@@ -14,9 +14,8 @@ import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-@DataR2dbcTest
 @Import(DatabaseConfig.class)
-class BeerRepositoryTest {
+public class BeerRepositoryTest {
 
     @Autowired
     BeerRepository beerRepository;
@@ -27,6 +26,7 @@ class BeerRepositoryTest {
 
         System.out.println(objectMapper.writeValueAsString(getTestBeer()));
     }
+
     @Test
     void saveNewBeer() {
         beerRepository.save(getTestBeer())
@@ -35,7 +35,7 @@ class BeerRepositoryTest {
                 });
     }
 
-    Beer getTestBeer() {
+    public static Beer getTestBeer() {
         return Beer.builder()
                 .beerName("Space Dust")
                 .beerStyle("IPA")
