@@ -17,7 +17,11 @@ import reactor.core.publisher.Mono;
 public class BeerServiceImpl implements BeerService {
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper;
-
+    @Override
+    public Mono<BeerDTO> saveNewBeer(BeerDTO beerDTO) {
+        return beerRepository.save(beerMapper.beerDtoToBeer(beerDTO))
+                .map(beerMapper::beerToBeerDto);
+    }
     @Override
     public Flux<BeerDTO> listBeer() {
         return beerRepository.findAll().map(beerMapper::beerToBeerDto);
