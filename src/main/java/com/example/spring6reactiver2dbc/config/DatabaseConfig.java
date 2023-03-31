@@ -13,7 +13,9 @@ import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator;
  * @Author Hazeem Hassan
  */
 @Configuration
+
 public class DatabaseConfig {
+
 
     @Value("classpath:/schema.sql")
     Resource resource;
